@@ -9,36 +9,44 @@ ApplicationWindow {
     visible: true
     title: "Qt 6.5 ColorScheme 示例"
 
-    readonly property bool uiDark: themeSwitch.userModified ? themeSwitch.checked : themeManager.isDarkMode
+    readonly property bool uiDark: themeSwitch.userModified ? themeSwitch.checked : theme.isDarkMode
 
     Material.theme: uiDark ? Material.Dark : Material.Light
-    Material.accent: Material.DeepPurple
+    Material.accent: Material.Blue
 
-    Column {
-        anchors.centerIn: parent
-        spacing: 20
+    Row {
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: 20
+        spacing: 10
 
-        Label {
-            text: "系统检测: " + (themeManager.isDarkMode ? "暗色" : "亮色")
-            font.bold: true
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-
-        Switch {
+        Button {
             id: themeSwitch
-            text: "手动覆盖主题"
-            property bool userModified: false
+            Material.accent: Material.darkgray
+            width: 32
+            height: 32
+            background: Rectangle {
+                color: "transparent"
+            }
 
-            checked: themeManager.isDarkMode
+            property bool userModified: false
+            checked: theme.isDarkMode
 
             onClicked: {
                 userModified = true;
+                checked = !checked;
             }
-        }
 
-        Button {
-            text: "重置并跟随系统"
-            onClicked: themeSwitch.userModified = false
+            Image {
+                id: themeIcon
+                anchors.fill: parent
+                source: uiDark ? "qrc:/res/IcTwotoneDarkMode.svg" : "qrc:/res/IcTwotoneLightMode.svg"
+                fillMode: Image.PreserveAspectFit
+            }
+
+            HoverHandler {
+                cursorShape: Qt.PointingHandCursor
+            }
         }
     }
 }

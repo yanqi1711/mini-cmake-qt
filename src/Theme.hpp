@@ -1,14 +1,14 @@
-#ifndef THEMEMANAGER_H
-#define THEMEMANAGER_H
+#ifndef THEME_H
+#define THEME_H
 
 #include <QObject>
 
-class ThemeManager : public QObject {
+class Theme : public QObject {
 	Q_OBJECT
 	Q_PROPERTY(bool isDarkMode READ isDarkMode NOTIFY darkModeChanged)
 
     public:
-	explicit ThemeManager(QObject *parent = nullptr);
+	explicit Theme(QObject *parent = nullptr);
 	bool isDarkMode() const;
 
     signals:
@@ -18,4 +18,4 @@ class ThemeManager : public QObject {
 	void onColorSchemeChanged();
 };
 
-#endif // THEMEMANAGER_H
+#endif // THEME_H

@@ -27,8 +27,8 @@ set(RESOURCE_FILES
 
 # If you want to keep the icon, keep this line. If not, delete it.
 set(ICON_FILE "${CMAKE_CURRENT_SOURCE_DIR}/res/AppIcon.ico"
-        src/ThemeManager.cpp
-        src/ThemeManager.h)
+        src/Theme.cpp
+        src/Theme.hpp)
 
 # Create the executable
 add_executable(${PROJECT_NAME} WIN32 MACOSX_BUNDLE
@@ -44,6 +44,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
         Qt6::Quick
         Qt6::Qml
         Qt6::QuickControls2
+
 )
 
 # Simple install logic

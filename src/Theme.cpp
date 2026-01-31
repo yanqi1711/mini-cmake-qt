@@ -1,20 +1,20 @@
-#include "ThemeManager.h"
+#include "Theme.hpp"
 #include <QGuiApplication>
 #include <QStyleHints>
 
-ThemeManager::ThemeManager(QObject *parent)
+Theme::Theme(QObject *parent)
 	: QObject(parent)
 {
 	connect(qGuiApp->styleHints(), &QStyleHints::colorSchemeChanged, this,
-		&ThemeManager::onColorSchemeChanged);
+		&Theme::onColorSchemeChanged);
 }
 
-bool ThemeManager::isDarkMode() const
+bool Theme::isDarkMode() const
 {
 	return qGuiApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark;
 }
 
-void ThemeManager::onColorSchemeChanged()
+void Theme::onColorSchemeChanged()
 {
 	emit darkModeChanged();
 }

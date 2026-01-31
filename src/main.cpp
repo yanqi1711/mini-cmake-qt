@@ -1,4 +1,4 @@
-#include "ThemeManager.h"
+#include "Theme.hpp"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -10,10 +10,10 @@ int main(int argc, char *argv[])
 
 	QGuiApplication app(argc, argv);
 
-	ThemeManager themeManager;
+	Theme theme;
 	QQmlApplicationEngine engine;
 
-	engine.rootContext()->setContextProperty("themeManager", &themeManager);
+	engine.rootContext()->setContextProperty("theme", &theme);
 
 	const QUrl url(QStringLiteral("qrc:/res/main.qml"));
 
